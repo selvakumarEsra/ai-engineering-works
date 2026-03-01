@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Selvakumar's Blog</title>
+  <meta name="description" content="Tech, AI tools, developer productivity, Claude / LLM workflows"/>
+  <style>
+    :root {
+      --terracotta:  #B85042;
+      --terracotta-dark: #8B3830;
+      --cream:       #F5F4EF;
+      --cream-card:  #FFFFFF;
+      --sage:        #A7BEAE;
+      --ink:         #1a1a1a;
+      --border:      #E8E6DF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--cream);
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--ink);
+      padding: 48px 20px 80px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 6vw, 48px);
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .post-card {
+      background: var(--cream-card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(184, 80, 66, 0.12);
+    }
+
+    .post-card .accent-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--terracotta);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .post-tag {
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    .post-title {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .post-excerpt {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 56px;
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .footer a {
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Selvakumar's Blog</h1>
+      <p>Tech, AI tools, developer productivity, Claude / LLM workflows</p>
+    </div>
+
+    <div class="post-list">
+      <a href="posts/2026-03-01-claude-code-advanced-usage.html" class="post-card">
+        <div class="accent-bar"></div>
+        <div class="post-meta">
+          <span class="post-tag">Advanced Guide</span>
+          <span>March 1, 2026</span>
+          <span>·</span>
+          <span>8 min read</span>
+        </div>
+        <h2 class="post-title">Claude Code: The Features You're Not Using</h2>
+        <p class="post-excerpt">Most developers barely scratch the surface. This guide covers memory, context control, custom commands, and hooks — the tools that make Claude Code genuinely powerful.</p>
+      </a>
+
+      <a href="posts/Claude Code – Advanced Usage Guide.html" class="post-card">
+        <div class="accent-bar"></div>
+        <div class="post-meta">
+          <span class="post-tag">Advanced Guide</span>
+          <span>Earlier</span>
+        </div>
+        <h2 class="post-title">Claude Code – Advanced Usage Guide</h2>
+        <p class="post-excerpt">Original reference guide for Claude Code power users.</p>
+      </a>
+    </div>
+
+    <div class="footer">
+      <p>Written by <strong>Selvakumar</strong></p>
+      <p style="margin-top:8px;">
+        <a href="https://github.com/superdeveloper" target="_blank">GitHub</a>
+        ·
+        <a href="https://x.com/superdeveloper" target="_blank">Twitter</a>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

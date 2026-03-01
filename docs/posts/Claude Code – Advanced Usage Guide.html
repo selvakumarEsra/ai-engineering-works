@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<!-- saved from url=(0256)file:///Users/superdeveloper/Library/Application%20Support/Claude/local-agent-mode-sessions/d7241994-38b5-4872-964b-887555e1a6d2/99ab248c-7a22-4e9b-87a3-687231e1544f/local_c971e8b9-da44-4764-a104-a1a5afc45dd3/outputs/claude_code_advanced_guide_medium.html# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code – Advanced Usage Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Georgia&family=Inter:wght@400;500;600;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F5F4EF;
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      padding: 48px 20px 80px;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      max-width: 720px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .hero .tag {
+      display: inline-block;
+      background: #B85042;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.2;
+      color: #1a1a1a;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span { color: #B85042; }
+
+    .hero p {
+      font-size: 17px;
+      color: #555;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .hero-meta .dot { width: 4px; height: 4px; background: #ccc; border-radius: 50%; }
+
+    .divider {
+      max-width: 720px;
+      margin: 0 auto 56px;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+
+    /* ── SECTION LABELS ───────────────────────────────── */
+    .section-label {
+      max-width: 720px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label .icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .section-label h2 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      color: #1a1a1a;
+    }
+
+    .section-label p {
+      font-size: 13px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    /* ── CARD GRID ────────────────────────────────────── */
+    .card-grid {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .card-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .card-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .card-grid.cols-1 { grid-template-columns: 1fr; }
+
+    /* ── BASE CARD ────────────────────────────────────── */
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #E8E6DF;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card .accent-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: #B85042;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .card .accent-bar.sage { background: #A7BEAE; }
+    .card .accent-bar.cream { background: #E7E8D1; }
+    .card .accent-bar.dark { background: #1a1a1a; }
+
+    .card h3 {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .card ul li {
+      font-size: 13.5px;
+      color: #444;
+      line-height: 1.55;
+      padding: 5px 0 5px 20px;
+      border-bottom: 1px solid #f0ede7;
+      position: relative;
+    }
+
+    .card ul li:last-child { border-bottom: none; }
+
+    .card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #B85042;
+      font-size: 12px;
+    }
+
+    /* ── HERO CARD ────────────────────────────────────── */
+    .card.hero-card {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 32px;
+    }
+
+    .card.hero-card h3 {
+      color: #fff;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card.hero-card p { color: #aaa; }
+
+    /* ── CODE CARD ────────────────────────────────────── */
+    .card.code-card { background: #F8F7F2; }
+
+    .card .code-block {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 12.5px;
+      color: #A7BEAE;
+      line-height: 1.7;
+    }
+
+    .card .code-block .comment { color: #666; }
+    .card .code-block .highlight { color: #E7C96A; }
+
+    /* ── NUMBERED STEPS ───────────────────────────────── */
+    .card .steps {
+      counter-reset: step-counter;
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .card .steps li {
+      counter-increment: step-counter;
+      padding: 8px 0 8px 38px;
+      font-size: 13.5px;
+      color: #444;
+      border-bottom: 1px solid #f0ede7;
+      position: relative;
+    }
+
+    .card .steps li:last-child { border-bottom: none; }
+
+    .card .steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      width: 24px; height: 24px;
+      background: #B85042;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      top: 8px;
+    }
+
+    /* ── BADGE CARD (key→value) ───────────────────────── */
+    .card .badges {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .card .badge-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .card .badge {
+      background: #FDF0EE;
+      color: #B85042;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      padding: 3px 8px;
+      white-space: nowrap;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .card .badge.sage { background: #EDF4EF; color: #4a7a5e; }
+    .card .badge.dark { background: #eee; color: #333; }
+
+    .card .badge-text {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* ── WIDE CARD ────────────────────────────────────── */
+    .card.wide {
+      grid-column: span 2;
+    }
+
+    .card.wide-3 {
+      grid-column: span 3;
+    }
+
+    /* ── CALLOUT CARD ─────────────────────────────────── */
+    .card.callout {
+      background: linear-gradient(135deg, #B85042 0%, #8B3830 100%);
+      color: #fff;
+    }
+
+    .card.callout h3 { color: #fff; font-size: 18px; }
+    .card.callout p { color: rgba(255,255,255,0.82); }
+    .card.callout ul li { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.12); }
+    .card.callout ul li::before { color: #E7C96A; }
+
+    /* ── COMPARISON TABLE ─────────────────────────────── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+
+    .compare-table th {
+      background: #F8F7F2;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 2px solid #E8E6DF;
+    }
+
+    .compare-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #f0ede7;
+      color: #444;
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+
+    .compare-table .pre { color: #B85042; font-weight: 600; }
+    .compare-table .post { color: #4a7a5e; font-weight: 600; }
+
+    /* ── EMOJI ICON ───────────────────────────────────── */
+    .card .card-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    .footer {
+      max-width: 720px;
+      margin: 56px auto 0;
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .footer a { color: #B85042; text-decoration: none; }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 600px) {
+      .card-grid.cols-2,
+      .card-grid.cols-3 { grid-template-columns: 1fr; }
+      .card.wide,
+      .card.wide-3 { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════════ -->
+  <div class="hero">
+    <span class="tag">Advanced Guide</span>
+    <h1>Claude Code:<br><span>The Features You're Not Using</span></h1>
+    <p>Most developers barely scratch the surface. This guide covers memory, context control, custom commands, and hooks — the tools that make Claude Code genuinely powerful.</p>
+    <div class="hero-meta">
+      <span>8 min read</span>
+      <div class="dot"></div>
+      <span>27 concepts</span>
+      <div class="dot"></div>
+      <span>Claude Code Power User Series</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══ SECTION 1 — INITIALISATION & MEMORY ═══════════ -->
+  <div class="section-label">
+    <div class="icon" style="background:#FDF0EE;">🧠</div>
+    <div>
+      <h2>Initialisation &amp; Project Memory</h2>
+      <p>Set up Claude to understand your codebase from day one</p>
+    </div>
+  </div>
+
+  <div class="card-grid cols-2">
+
+    <div class="card hero-card">
+      <div class="accent-bar"></div>
+      <span class="card-icon">⚡</span>
+      <h3>Start every project with /init</h3>
+      <p>Running <code style="background:#333;padding:2px 6px;border-radius:4px;color:#A7BEAE;font-size:12px;">/init</code> at the start of a new project lets Claude scan your entire codebase before you write a single prompt.</p>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <h3>What /init does for you</h3>
+      <ul>
+        <li>Scans the entire codebase structure</li>
+        <li>Understands architecture &amp; key files</li>
+        <li>Detects coding patterns and conventions</li>
+        <li>Creates a <code>CLAUDE.md</code> summary file</li>
+      </ul>
+    </div>
+
+    <div class="card wide">
+      <div class="accent-bar sage"></div>
+      <h3>CLAUDE.md — Your Project's Persistent Brain</h3>
+      <p style="margin-bottom:14px;">Think of <code>CLAUDE.md</code> as a README written for Claude, not humans. It's included automatically in every request, meaning Claude always starts with full project context — no re-explaining needed.</p>
+      <div class="badges">
+        <div class="badge-row">
+          <span class="badge">Guides</span>
+          <span class="badge-text">Claude on architecture, file structure &amp; key commands</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge">Stores</span>
+          <span class="badge-text">Custom instructions and project-level preferences</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge">Auto-loads</span>
+          <span class="badge-text">Included in every conversation, zero manual effort</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Three types of CLAUDE.md -->
+  <div class="card-grid cols-3">
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <span class="card-icon">📁</span>
+      <h3>CLAUDE.md</h3>
+      <p>Project-level. Committed to your repo. Shared with the whole team.</p>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar sage"></div>
+      <span class="card-icon">🔒</span>
+      <h3>CLAUDE.local.md</h3>
+      <p>Personal preferences. Not committed. Not shared. Yours alone.</p>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar dark"></div>
+      <span class="card-icon">🌍</span>
+      <h3>~/.claude/CLAUDE.md</h3>
+      <p>Global rules. Applies to every project you open. Set once, always active.</p>
+    </div>
+
+  </div>
+
+  <!-- Custom instructions + @ references -->
+  <div class="card-grid cols-2">
+
+    <div class="card code-card">
+      <div class="accent-bar"></div>
+      <h3>Writing Custom Instructions with #</h3>
+      <p>Prefix any message with <strong>#</strong> to enter memory mode. Claude writes it straight into <code>CLAUDE.md</code>.</p>
+      <div class="code-block">
+        <span class="comment"># Enter memory mode</span><br>
+        # Use comments sparingly.<br>
+        # Only comment complex logic.<br><br>
+        <span class="highlight">→ Claude auto-merges into CLAUDE.md</span>
+      </div>
+    </div>
+
+    <div class="card code-card">
+      <div class="accent-bar sage"></div>
+      <h3>Referencing Files with @</h3>
+      <p>Use <code>@filename</code> to pull a file into the conversation. Works inline in prompts or inside <code>CLAUDE.md</code> for persistent context.</p>
+      <div class="code-block">
+        <span class="comment"># In a prompt</span><br>
+        How does auth work? <span class="highlight">@auth.ts</span><br><br>
+        <span class="comment"># In CLAUDE.md (persistent)</span><br>
+        <span class="highlight">@prisma/schema.prisma</span>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══ SECTION 2 — CONTEXT CONTROL ═══════════════════ -->
+  <div class="section-label">
+    <div class="icon" style="background:#EDF4EF;">🎮</div>
+    <div>
+      <h2>Context Control</h2>
+      <p>Stay focused. Stop runaway responses. Keep long sessions productive.</p>
+    </div>
+  </div>
+
+  <div class="card-grid cols-2">
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <span class="card-icon">⛔</span>
+      <h3>Esc — Interrupt &amp; Redirect</h3>
+      <p>Press <strong>Esc</strong> once to stop a response mid-stream. Redirect Claude immediately to where you actually want it to go. Prevents deep, off-track rabbit holes.</p>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar sage"></div>
+      <span class="card-icon">⏪</span>
+      <h3>Esc Esc — Rewind the Conversation</h3>
+      <p>Press <strong>Esc twice</strong> to strip away distracting history while keeping valuable context. Ideal when a conversation has gone sideways.</p>
+    </div>
+
+  </div>
+
+  <div class="card-grid cols-1">
+    <div class="card callout">
+      <h3>🗂 Context Management Quick Reference</h3>
+      <div class="badges" style="margin-top:14px;">
+        <div class="badge-row">
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:#fff;">Esc</span>
+          <span class="badge-text" style="color:rgba(255,255,255,0.85);">Interrupt the current response — redirect immediately</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:#fff;">Esc Esc</span>
+          <span class="badge-text" style="color:rgba(255,255,255,0.85);">Rewind — remove distracting messages, keep useful context</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:#fff;">/compact</span>
+          <span class="badge-text" style="color:rgba(255,255,255,0.85);">Summarise conversation — retains knowledge, reduces noise</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:#fff;">/clear</span>
+          <span class="badge-text" style="color:rgba(255,255,255,0.85);">Full reset — removes all conversation history entirely</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-grid cols-1">
+    <div class="card">
+      <div class="accent-bar"></div>
+      <h3>Best Use Cases for Context Controls</h3>
+      <ul>
+        <li>Long-running development sessions spanning hours or days</li>
+        <li>Complex multi-module projects with lots of file context</li>
+        <li>Correcting repeated mistakes without resetting everything</li>
+        <li>Context-heavy AI workflows where relevance degrades over time</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══ SECTION 3 — CUSTOM COMMANDS ═══════════════════ -->
+  <div class="section-label">
+    <div class="icon" style="background:#F8F7F2;">⚙️</div>
+    <div>
+      <h2>Custom Commands</h2>
+      <p>Turn your most-used prompts into reusable slash commands</p>
+    </div>
+  </div>
+
+  <div class="card-grid cols-2">
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <h3>Creating a Custom Command</h3>
+      <ol class="steps">
+        <li>Create <code>.claude/commands/</code> folder in your project</li>
+        <li>Add a markdown file (e.g. <code>audit.md</code>)</li>
+        <li>The filename becomes the command name (<code>/audit</code>)</li>
+        <li>Restart Claude Code to activate</li>
+      </ol>
+    </div>
+
+    <div class="card code-card">
+      <div class="accent-bar sage"></div>
+      <h3>Commands with Arguments</h3>
+      <p style="margin-bottom:10px;">Use <code>$ARGUMENTS</code> as a placeholder to accept dynamic input — file paths, text, flags. Makes commands reusable across any context.</p>
+      <div class="code-block">
+        <span class="comment"># .claude/commands/review.md</span><br>
+        Review the following file for<br>
+        code quality issues:<br>
+        <span class="highlight">$ARGUMENTS</span><br><br>
+        <span class="comment"># Usage:</span><br>
+        /review src/auth.ts
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══ SECTION 4 — HOOKS ══════════════════════════════ -->
+  <div class="section-label">
+    <div class="icon" style="background:#FDF0EE;">🪝</div>
+    <div>
+      <h2>Hooks</h2>
+      <p>Automate actions before and after Claude does anything</p>
+    </div>
+  </div>
+
+  <div class="card-grid cols-1">
+    <div class="card hero-card">
+      <h3>What are Hooks?</h3>
+      <p>Hooks let you intercept Claude's tool calls — automatically running your own commands before or after Claude acts. Format, test, validate, log, or block — all without lifting a finger.</p>
+    </div>
+  </div>
+
+  <div class="card-grid cols-2">
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <span class="card-icon">🔀</span>
+      <h3>PreToolUse vs PostToolUse</h3>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Hook</th>
+            <th>When</th>
+            <th>Can Block?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pre">PreToolUse</td>
+            <td>Before tool runs</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td class="post">PostToolUse</td>
+            <td>After tool runs</td>
+            <td>❌ No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar sage"></div>
+      <h3>Building a Hook — 4 Steps</h3>
+      <ol class="steps">
+        <li>Choose Pre or Post hook timing</li>
+        <li>Select which tool types to monitor</li>
+        <li>Write the command to process the call</li>
+        <li>Return feedback or block the operation</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <!-- All hook types -->
+  <div class="card-grid cols-2">
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <h3>All Available Hook Types</h3>
+      <div class="badges">
+        <div class="badge-row">
+          <span class="badge">PreToolUse</span>
+          <span class="badge-text">Before tool execution — can block</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge">PostToolUse</span>
+          <span class="badge-text">After tool execution — cannot block</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge sage">Notification</span>
+          <span class="badge-text">When Claude sends a notification</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge sage">Stop</span>
+          <span class="badge-text">When Claude finishes responding</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge dark">SubagentStop</span>
+          <span class="badge-text">When a subagent task finishes</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge dark">PreCompact</span>
+          <span class="badge-text">Before /compact runs</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge dark">UserPromptSubmit</span>
+          <span class="badge-text">Before Claude processes your prompt</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge dark">SessionStart / SessionEnd</span>
+          <span class="badge-text">Session lifecycle events</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar sage"></div>
+      <h3>Practical Hook Applications</h3>
+      <ul>
+        <li>Auto-format code after every edit</li>
+        <li>Run tests on file changes automatically</li>
+        <li>Block access to sensitive files (.env, keys, .git)</li>
+        <li>Enforce coding standards project-wide</li>
+        <li>Track and log all Claude tool usage</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Hook config + payload -->
+  <div class="card-grid cols-2">
+
+    <div class="card code-card">
+      <div class="accent-bar"></div>
+      <h3>Hook Configuration</h3>
+      <p style="margin-bottom:10px;">Hooks are defined in <code>.claude/settings.json</code>. You can scope them globally, per-project, or locally.</p>
+      <div class="code-block">
+        <span class="comment">// .claude/settings.json</span><br>
+        {<br>
+        &nbsp;&nbsp;<span class="highlight">"PreToolUse"</span>: [...],<br>
+        &nbsp;&nbsp;<span class="highlight">"PostToolUse"</span>: [...]<br>
+        }
+      </div>
+    </div>
+
+    <div class="card code-card">
+      <div class="accent-bar sage"></div>
+      <h3>Understanding Hook Payload</h3>
+      <p style="margin-bottom:10px;">Hooks receive JSON via stdin. Structure varies by type — use a logging helper to inspect the real payload.</p>
+      <div class="code-block">
+        {<br>
+        &nbsp;&nbsp;"session_id": "...",<br>
+        &nbsp;&nbsp;"hook_event_name": "...",<br>
+        &nbsp;&nbsp;"tool_name": "...",<br>
+        &nbsp;&nbsp;"tool_input": {...},<br>
+        &nbsp;&nbsp;"tool_response": {...}<br>
+        }
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Security + debugging -->
+  <div class="card-grid cols-2">
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <h3>🔐 Security Best Practices</h3>
+      <ul>
+        <li>Validate &amp; sanitize all hook inputs</li>
+        <li>Always use absolute file paths</li>
+        <li>Block path traversal attempts explicitly</li>
+        <li>Avoid touching sensitive files (.env, key files, .git)</li>
+      </ul>
+    </div>
+
+    <div class="card code-card">
+      <div class="accent-bar sage"></div>
+      <h3>🐛 Debugging Hooks</h3>
+      <p style="margin-bottom:10px;">Hook input structure can be unpredictable. Log the raw stdin payload first — it saves hours of guesswork.</p>
+      <div class="code-block">
+        <span class="comment"># Helper hook to log payload</span><br>
+        cat - | <span class="highlight">jq .</span> &gt; post-log.json<br><br>
+        <span class="comment"># Then inspect:</span><br>
+        cat post-log.json
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════ -->
+  <div class="footer">
+    <p>Based on <em>Claude Code – Advanced Usage Guide</em> · <a href="file:///Users/superdeveloper/Library/Application%20Support/Claude/local-agent-mode-sessions/d7241994-38b5-4872-964b-887555e1a6d2/99ab248c-7a22-4e9b-87a3-687231e1544f/local_c971e8b9-da44-4764-a104-a1a5afc45dd3/outputs/claude_code_advanced_guide_medium.html#">Read original →</a></p>
+    <p style="margin-top:8px;">Found this useful? Follow for more Claude Code deep-dives.</p>
+  </div>
+
+
+
+</body></html>
