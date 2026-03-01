@@ -3,17 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Selvakumar's Blog</title>
-  <meta name="description" content="Tech, AI tools, developer productivity, Claude / LLM workflows"/>
+  <title>Selvakumar Esra — Tech, AI, Developer Productivity</title>
+  <meta name="description" content="Technology leader exploring AI tools, developer productivity, and Claude/LLM workflows. 20+ years in tech, IIT Kanpur alum, currently at DBS Bank."/>
   <style>
     :root {
       --terracotta:  #B85042;
       --terracotta-dark: #8B3830;
       --cream:       #F5F4EF;
       --cream-card:  #FFFFFF;
+      --cream-code:  #F8F7F2;
       --sage:        #A7BEAE;
+      --sage-dark:   #4a7a5e;
+      --sand:        #E7E8D1;
       --ink:         #1a1a1a;
+      --ink-mid:     #444;
+      --ink-light:   #888;
       --border:      #E8E6DF;
+      --border-light:#f0ede7;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,23 +37,139 @@
       margin: 0 auto;
     }
 
+    /* ── HERO ─────────────────────────────── */
     .hero {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 56px;
+    }
+
+    .hero .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+      font-size: 48px;
+      color: #fff;
     }
 
     .hero h1 {
       font-family: Georgia, serif;
       font-size: clamp(32px, 6vw, 48px);
       color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .hero .tagline {
+      font-size: 17px;
+      color: var(--ink-mid);
+      margin-bottom: 20px;
+    }
+
+    .hero .meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--ink-light);
+      flex-wrap: wrap;
+    }
+
+    .hero .meta a {
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+
+    .hero .meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── DIVIDER ──────────────────────────── */
+    .divider {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── SECTION LABEL ────────────────────── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-label .icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .section-label h2 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      color: var(--ink);
+    }
+
+    .section-label p {
+      font-size: 13px;
+      color: var(--ink-light);
+      margin-top: 2px;
+    }
+
+    /* ── CARDS ─────────────────────────────── */
+    .card {
+      background: var(--cream-card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .card .accent-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--terracotta);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .card .accent-bar.sage  { background: var(--sage); }
+    .card .accent-bar.dark  { background: var(--ink); }
+
+    .card h3 {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: var(--ink);
       margin-bottom: 12px;
     }
 
-    .hero p {
-      color: #666;
-      font-size: 16px;
+    .card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
     }
 
+    .card.dark-card {
+      background: var(--ink);
+    }
+
+    .card.dark-card h3 { color: #fff; }
+    .card.dark-card p  { color: #aaa; }
+
+    /* ── POST LIST ────────────────────────── */
     .post-list {
       display: flex;
       flex-direction: column;
@@ -112,25 +234,137 @@
       line-height: 1.6;
     }
 
+    /* ── BADGES ───────────────────────────── */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .badge {
+      background: #FDF0EE;
+      color: var(--terracotta);
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      padding: 4px 10px;
+    }
+
+    .badge.sage {
+      background: #EDF4EF;
+      color: var(--sage-dark);
+    }
+
+    /* ── LINKS ───────────────────────────── */
+    .links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .link-btn.primary {
+      background: var(--terracotta);
+      color: #fff;
+    }
+
+    .link-btn.secondary {
+      background: var(--sage);
+      color: #fff;
+    }
+
+    /* ── FOOTER ───────────────────────────── */
     .footer {
       margin-top: 56px;
       text-align: center;
       font-size: 13px;
-      color: #888;
+      color: var(--ink-light);
     }
 
     .footer a {
       color: var(--terracotta);
       text-decoration: none;
     }
+
+    /* ── RESPONSIVE ───────────────────────── */
+    @media (max-width: 600px) {
+      .hero .meta {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
+
+    <!-- ══ HERO ══════════════════════════════════════════ -->
     <div class="hero">
-      <h1>Selvakumar's Blog</h1>
-      <p>Tech, AI tools, developer productivity, Claude / LLM workflows</p>
+      <div class="avatar">SE</div>
+      <h1>Selvakumar Esra</h1>
+      <p class="tagline">Technology Leader · AI Explorer · Builder</p>
+      <div class="meta">
+        <span>📍 Singapore</span>
+        <span>🏦 DBS Bank</span>
+        <span>🎓 IIT Kanpur</span>
+        <span><a href="https://www.linkedin.com/in/selvae/" target="_blank">🔗 LinkedIn</a></span>
+        <span><a href="https://github.com/selvakumarEsra" target="_blank">🔗 GitHub</a></span>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- ══ ABOUT ═════════════════════════════════════════ -->
+    <div class="section-label">
+      <div class="icon" style="background:#FDF0EE;">👋</div>
+      <div>
+        <h2>About</h2>
+        <p>Two decades of building technology that matters</p>
+      </div>
+    </div>
+
+    <div class="card dark-card">
+      <div class="accent-bar"></div>
+      <p>
+        I'm a seasoned technology leader with nearly 20 years of experience driving digital transformation in banking and finance.
+        Currently exploring the frontiers of AI engineering — Claude, LLMs, and agentic systems.
+        I write about developer productivity, AI tools, and practical ways to ship better code faster.
+      </p>
+      <div class="badges">
+        <span class="badge">Anthropic Academy Certified</span>
+        <span class="badge">AWS Solution Architect</span>
+        <span class="badge">Oxford Blockchain Strategy</span>
+        <span class="badge">Certified Scrum Master</span>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- ══ LATEST POSTS ═════════════════════════════════ -->
+    <div class="section-label">
+      <div class="icon" style="background:#EDF4EF;">✍️</div>
+      <div>
+        <h2>Latest Posts</h2>
+        <p>Practical insights from the trenches</p>
+      </div>
     </div>
 
     <div class="post-list">
@@ -142,29 +376,70 @@
           <span>·</span>
           <span>8 min read</span>
         </div>
-        <h2 class="post-title">Claude Code: The Features You're Not Using</h2>
+        <h3 class="post-title">Claude Code: The Features You're Not Using</h3>
         <p class="post-excerpt">Most developers barely scratch the surface. This guide covers memory, context control, custom commands, and hooks — the tools that make Claude Code genuinely powerful.</p>
       </a>
-
-      <a href="posts/Claude Code – Advanced Usage Guide.html" class="post-card">
-        <div class="accent-bar"></div>
-        <div class="post-meta">
-          <span class="post-tag">Advanced Guide</span>
-          <span>Earlier</span>
-        </div>
-        <h2 class="post-title">Claude Code – Advanced Usage Guide</h2>
-        <p class="post-excerpt">Original reference guide for Claude Code power users.</p>
-      </a>
     </div>
 
+    <hr class="divider"/>
+
+    <!-- ══ FOCUS AREAS ══════════════════════════════════ -->
+    <div class="section-label">
+      <div class="icon" style="background:#F8F7F2;">🎯</div>
+      <div>
+        <h2>Focus Areas</h2>
+        <p>What I'm thinking about and building</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar sage"></div>
+      <h3>🤖 AI Engineering</h3>
+      <p>Claude Code, agentic systems, prompt engineering, and practical AI workflows for developers.</p>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <h3>🏦 Banking & Fintech</h3>
+      <p>DeFi, blockchain in finance, tokenized collateral, and the future of digital banking.</p>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar sage"></div>
+      <h3>⚡ Developer Productivity</h3>
+      <p>Tools, workflows, and practices that help teams ship better software faster.</p>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- ══ CONNECT ═══════════════════════════════════════ -->
+    <div class="section-label">
+      <div class="icon" style="background:#FDF0EE;">📬</div>
+      <div>
+        <h2>Let's Connect</h2>
+        <p>17K followers · 500+ connections</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="accent-bar"></div>
+      <p>I'm always interested in conversations about AI, banking technology, or developer tools.</p>
+      <div class="links">
+        <a class="link-btn primary" href="https://www.linkedin.com/in/selvae/" target="_blank">LinkedIn →</a>
+        <a class="link-btn secondary" href="https://github.com/selvakumarEsra" target="_blank">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- ══ FOOTER ═══════════════════════════════════════ -->
     <div class="footer">
-      <p>Written by <strong>Selvakumar</strong></p>
+      <p>© 2026 Selvakumar Esra · Built with care in Singapore</p>
       <p style="margin-top:8px;">
-        <a href="https://github.com/superdeveloper" target="_blank">GitHub</a>
+        <a href="https://github.com/selvakumarEsra/ai-engineering-works" target="_blank">Source</a>
         ·
-        <a href="https://x.com/superdeveloper" target="_blank">Twitter</a>
+        <a href="#">RSS</a>
       </p>
     </div>
+
   </div>
 
 </body>
